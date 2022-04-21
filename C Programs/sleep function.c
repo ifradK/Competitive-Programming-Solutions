@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<dos.h>
+main()
+{
+    printf("G\n");
+    sleep(2);
+        printf("C\n\n");
+    sleep(2);
+        printf("E\n");
+    sleep(2);
+        printf("D\n");
+    sleep(2);
+    getch();
+}

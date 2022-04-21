@@ -1,0 +1,65 @@
+#include<iostream>
+#include <bits/stdc++.h>
+#include<vector>
+using namespace std;
+main()
+{
+    int q,n,p=0,i,j,a,k;
+    cin>>q;
+    while(q--)
+    {
+        p=0;
+        cin>>n;
+        vector<int> v;
+        for(i=0;i<n;i++)
+        {
+            cin>>a;
+            v.push_back(a);
+        }
+        for(i=0;i<n;i++)
+        {
+            if(v[i]==1)
+            {
+                break;
+            }
+        }
+        for(j=0;j<i;j++)
+        {
+            v.push_back(v[j]);
+        }
+        if(v[i+1]==2)
+        {
+            for(j=i+1;j<n+i-1;j++)
+            {
+                if(v[j]+1!=v[j+1])
+                {
+                    p=1;
+                    cout<<"NO"<<endl;
+                    break;
+                }
+            }
+            if(p!=1)
+            {
+                cout<<"YES"<<endl;
+            }
+        }
+        else
+        {
+            for(j=i+1;j<n+i-1;j++)
+            {
+                if(v[j]-1!=v[j+1])
+                {
+                    p=1;
+                    cout<<"NO"<<endl;
+                    break;
+                }
+            }
+            if(p!=1)
+            {
+                cout<<"YES"<<endl;
+            }
+        }
+        v.clear();
+    }
+    return 0;
+}

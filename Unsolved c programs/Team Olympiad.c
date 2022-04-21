@@ -1,0 +1,34 @@
+#include<stdio.h>
+main()
+{
+    int n,t[5010]={0},i,j,w;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&t[i]);
+    }
+    w=n/3;
+    printf("%d",w);
+    for(i=1;i<=w;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(t[j]==1)
+            {
+                printf("%d",j);
+                t[j]=0;
+            }
+            if(t[j]==2)
+            {
+                printf("%d",j);
+                t[j]=0;
+            }
+            if(t[j]==3)
+            {
+                printf("%d",j);
+                t[j]=0;
+            }
+
+        }
+    }
+}
