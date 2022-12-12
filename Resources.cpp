@@ -1178,6 +1178,181 @@ void modBigNumber(string num, long long m)
 
 
 
+
+/*                                                               TOTAL NUMBER OF WAYS TO GET TARGET VALUE USING COIN CHANGE DP      */
+
+ll dp[][];
+ll ARRAY[];
+
+void CoinChangeTotalWays()
+{
+    ll i,j;
+    for(i=0;i<ARRAY_SIZE;i++)
+    {
+        dp[i][0]=1;
+    }
+    for(i=0;i<HIGHEST_NUMBER;i++)
+    {
+        dp[0][i]=1;
+    }
+    for(i=1;i<ARRAY_SIZE;i++)
+    {
+        for(j=1;j<HIGHEST_NUMBER;j++)
+        {
+            if(ARRAY[i]<=j)
+            {
+                dp[i][j]=(dp[i-1][j]+dp[i][j-ARRAY[i]]);
+            }
+            else
+            {
+                dp[i][j]=dp[i-1][j];
+            }
+        }
+    }
+}
+
+
+/*                                                               TOTAL NUMBER OF WAYS TO GET TARGET VALUE USING COIN CHANGE DP      */
+
+
+
+
+
+/*                                                               ORDERED SET     */
+
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+#define ordered_set tree<long long, null_type,less<long long>, rb_tree_tag,tree_order_statistics_node_update>
+
+ordered_set s1,s2;
+
+/*                                                               ORDERED SET     */
+
+
+/*                                                              CALCULATING FUNCTION EXECUTION TIME    */
+
+#include <chrono>
+using namespace std::chrono;
+auto start = high_resolution_clock::now();
+func();
+auto stop = high_resolution_clock::now();
+auto duration = duration_cast<microseconds>(stop - start);
+cout << duration.count() << endl;
+
+
+clock_t start, end;
+start = clock();
+func();
+end = clock();
+double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+cout << "Time taken by program is : " << fixed << time_taken << setprecision(5);
+
+
+/*                                                              CALCULATING FUNCTION EXECUTION TIME    */
+
+
+/*                                                              STRING SORT                            */
+
+void stringSort(int n)
+    {
+        for(int i=0;i<n;i++)
+        {
+            int temp=i;
+            string temp1=s[i];
+            for(int j=i+1;j<n;j++)
+            {
+                if(temp1.size()==s[j].size())
+                {
+                    if(temp1<s[j]){temp=j; temp1=s[j];}
+                }
+                else if(temp1.size()>s[j].size())
+                {
+                    bool flag=false;
+                    for(int k=0;k<s[j].size();k++)
+                    {
+                        if(temp1[k]<s[j][k])
+                        {
+                            temp=j;
+                            temp1=s[j];
+                            flag=true;
+                            break;
+                        }
+                        else if(temp1[k]>s[j][k]){flag=true; break;}
+                    }
+                    if(!flag)
+                    {
+                        string temp2=temp1+s[j];
+                        string temp3=s[j]+temp1;
+                        if(temp2<temp3){temp=j; temp1=s[j];}
+                    }
+                }
+                else if(temp1.size()<s[j].size())
+                {
+                    bool flag=false;
+                    for(int k=0;k<temp1.size();k++)
+                    {
+                        if(temp1[k]<s[j][k])
+                        {
+                            temp=j;
+                            temp1=s[j];
+                            flag=true;
+                            break;
+                        }
+                        else if(temp1[k]>s[j][k]){flag=true; break;}
+                    }
+                    if(!flag)
+                    {
+                        string temp2=temp1+s[j];
+                        string temp3=s[j]+temp1;
+                        if(temp2<temp3){temp=j; temp1=s[j];}
+                    }
+                }
+            }
+            swap(s[i],s[temp]);
+        }
+    }
+
+/*                                                              STRING SORT                         */
+
+
+
+/*                                                              MERGE SORT                         */
+
+void Merge(vector<int>& nums, int start, int mid, int end)
+    {
+        int l_size=mid-start+1, r_size=end-mid;
+        int l_arr[l_size], r_arr[r_size];
+
+        for(int i=0;i<l_size;i++){l_arr[i]=nums[start+i];}
+        for(int i=0;i<r_size;i++){r_arr[i]=nums[mid+1+i];}
+
+        int i=0,j=0,k=start;
+        while(i<l_size && j<r_size)
+        {
+            if(l_arr[i]<=r_arr[j]){nums[k]=l_arr[i]; i++;}
+            else if(l_arr[i]>r_arr[j]){nums[k]=r_arr[j]; j++;}
+            k++;
+        }
+        while(i<l_size){nums[k]=l_arr[i]; i++; k++;}
+        while(j<r_size){nums[k]=r_arr[j]; j++; k++;}
+    }
+
+    void mergeSort(vector<int>& nums, int start, int end)
+    {
+        if(start<end)
+        {
+            int mid=start+(end-start)/2;
+            mergeSort(nums, start, mid);
+            mergeSort(nums, mid+1, end);
+            Merge(nums, start, mid, end);
+        }
+    }
+
+/*                                                              MERGE SORT                         */
+
+
+
 /*                                                               NUMBER SYSTEM BASE CONVERSION      */
 
 int binaryNum[100];
@@ -1214,7 +1389,6 @@ long long binaryToDecimal(long long n)
 
 
 
-
 /*
 BFS -----------------------------------------------------  1
 PRIME NUMBER -------------------------------------------- 86
@@ -1235,7 +1409,11 @@ LONGEST COMMON SUBSEQUENCE ------------------------------ 709
 PISANO PERIOD ------------------------------------------- 739
 BINARY SEARCH ------------------------------------------- 758
 SIEVE OF ERATOSTHENES (FIND ALL PRIME NUMBERS)  --------- 787
+TOTAL NUMBER OF WAYS USING COIN CHANGE DP --------------- 1182
+ORDERED SET --------------------------------------------- 1221
+CALCULATUNG FUNCTION EXECUTION TIME --------------------- 1233
+STRING SORT --------------------------------------------- 1255
+MERGE SORT ---------------------------------------------- 1320
 NUMBER SYSTEM BASE CONVERSION --------------------------- LAST
-
 
 */

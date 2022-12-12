@@ -2,3 +2,4 @@
 2. অপারেটিং সিস্টেম এর বিভিন্ন কনসেপ্ট যেমন স্কেজুলিং, ফাইল সিস্টেম 
 3. Cracking the coding interview book
 4. solve robot bounded in circle leetcode (saw in an yt video)
+5. passing and returning arrays in functions (c++)
